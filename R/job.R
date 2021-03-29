@@ -8,7 +8,8 @@ data <- fromJSON("https://api.outbreak.info/genomics/prevalence-by-location-all-
 
 data_df <- data %>% 
   as.data.frame() %>% 
-  filter(ymd(results.date) >= ymd("2021-01-01")) %>% 
+  filter(ymd(results.date) >= ymd("2021-01-01")) %>%
+  filter(ymd(results.date) <= ymd(today() - 13)) %>% 
   select(results.lineage, results.date, results.prevalence_rolling) %>%
   pivot_wider(names_from = results.lineage, values_from = results.prevalence_rolling)
 
