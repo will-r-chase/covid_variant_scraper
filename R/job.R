@@ -11,7 +11,7 @@ percentize <- function(x)(x * 100)
 data_df <- data %>% 
   as.data.frame() %>% 
   filter(ymd(results.date) >= ymd("2021-01-01")) %>%
-  filter(ymd(results.date) <= ymd(today() - 7)) %>% 
+  filter(ymd(results.date) <= ymd(today() - 8)) %>% 
   select(results.lineage, results.date, results.prevalence_rolling) %>%
   pivot_wider(names_from = results.lineage, values_from = results.prevalence_rolling) %>%
   mutate_if(is.numeric, percentize) %>%
