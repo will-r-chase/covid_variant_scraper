@@ -15,6 +15,6 @@ data_df <- data %>%
   select(results.lineage, results.date, results.prevalence_rolling) %>%
   pivot_wider(names_from = results.lineage, values_from = results.prevalence_rolling) %>%
   mutate_if(is.numeric, percentize) %>%
-  select(results.date, b.1.617.2, ay.3, ay.4, ay.25, everything())
+  select(results.date, b.1.617.2, everything())
 
 write_csv(data_df, "data-raw/data.csv")
